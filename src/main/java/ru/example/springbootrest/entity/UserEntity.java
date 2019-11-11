@@ -2,6 +2,7 @@ package ru.example.springbootrest.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 @Entity
 @Table(name = "user", schema = "schemauser", catalog = "databaseUsers")
@@ -10,6 +11,7 @@ public class UserEntity {
     private String name;
     private Date birthDate;
     private Integer age;
+    private Collection<CreditEntity> creditsById;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +36,8 @@ public class UserEntity {
 
     @Basic
     @Column(name = "birth_date", nullable = true)
-    public Date getBirthDate(Date birthDate) {
-        return this.birthDate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
     public void setBirthDate(Date birthDate) {
@@ -44,8 +46,8 @@ public class UserEntity {
 
     @Basic
     @Column(name = "age", nullable = true)
-    public Integer getAge(int age) {
-        return this.age;
+    public Integer getAge() {
+        return age;
     }
 
     public void setAge(Integer age) {
@@ -74,5 +76,14 @@ public class UserEntity {
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
         result = 31 * result + (age != null ? age.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "userByIdUser")
+    public Collection<CreditEntity> getCreditsById() {
+        return creditsById;
+    }
+
+    public void setCreditsById(Collection<CreditEntity> creditsById) {
+        this.creditsById = creditsById;
     }
 }

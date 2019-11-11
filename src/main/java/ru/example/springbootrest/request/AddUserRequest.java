@@ -4,10 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 public class AddUserRequest {
-    @Id
-    @Column(name = "id")
-    @SequenceGenerator(name="seq",sequenceName="my_seq")
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+
     private int id;
     private String name;
     private Date birthDate;

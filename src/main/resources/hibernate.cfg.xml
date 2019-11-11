@@ -7,5 +7,6 @@
         <property name="connection.url">jdbc:postgresql://localhost:5432/databaseUsers</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <mapping class="ru.example.springbootrest.entity.UserEntity"/>
+        <mapping class="ru.example.springbootrest.entity.CreditEntity"/>
     </session-factory>
 </hibernate-configuration>
